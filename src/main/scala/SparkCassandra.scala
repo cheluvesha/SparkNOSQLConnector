@@ -12,7 +12,7 @@ object SparkCassandra extends App {
   val cassandra_ks_name = "example"
   val cassandra_table_name = "employees"
   val cassandra_cluster_name = "Test Cluster"
-
+  // reads data from cassandra table
   def readDataFromCassandra(): Unit ={
     val user_df = spark
       .read
@@ -25,6 +25,7 @@ object SparkCassandra extends App {
       .load()
     user_df.show()
   }
+  // writes data to cassandra table
   def writeToCassandra(): Unit = {
     val employeesData = Seq((121,"Sannath","Gulbarga","8569"),(123,"Sharath","mysore","45655"))
     val rddData = spark.sparkContext.parallelize(employeesData)
